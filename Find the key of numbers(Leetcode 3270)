@@ -1,0 +1,37 @@
+class Solution {
+    public int generateKey(int num1, int num2, int num3) {
+        String s1=Integer.toString(num1);
+        String s2=Integer.toString(num2);
+        String s3=Integer.toString(num3);
+        while(s1.length()<4)
+               s1="0"+s1;
+        while(s2.length()<4)
+               s2="0"+s2;
+        while(s3.length()<4)
+               s3="0"+s3;
+        String ans="";
+        for(int i=0;i<4;i++){
+            if(s1.charAt(i)<=s2.charAt(i) && s1.charAt(i)<=s3.charAt(i) )
+                    ans+=Character.toString(s1.charAt(i));
+            else if(s2.charAt(i)<=s1.charAt(i) && s2.charAt(i)<=s3.charAt(i))
+                    ans+=Character.toString(s2.charAt(i));
+            else
+                ans+=Character.toString(s3.charAt(i));        
+        }
+        StringBuilder sb=new StringBuilder();
+        int j=0;
+        for(j=0;j<ans.length();j++){
+            if(ans.charAt(j)!='0')
+              break;              
+        }
+        while(j<ans.length()){
+            sb.append(ans.charAt(j));
+            j++;
+        }
+        if(sb.length()==0)
+            return 0;
+        return Integer.parseInt(sb.toString());
+   
+        
+    }
+}
