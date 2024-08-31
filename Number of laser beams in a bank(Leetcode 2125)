@@ -1,0 +1,22 @@
+class Solution {
+    public static int count(String s){
+        int count1s=0;
+        for(char ch:s.toCharArray()){
+            if(ch=='1')
+                count1s++;
+        }
+        return count1s;
+    }
+    public int numberOfBeams(String[] bank) {
+        int n=bank.length;
+        int prev=0;
+        int ans=0;
+        for(int i=0;i<n;i++){
+            int curr=count(bank[i]);
+            ans=ans+prev*curr;
+            if(curr!=0)
+                prev=curr;
+        }
+        return ans;
+    }
+}
